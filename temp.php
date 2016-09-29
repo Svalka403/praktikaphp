@@ -5,6 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<p>FIO: <?php echo $imya;?> <?php echo $familiya;?> <?php echo $otchestvo;?> {tt} {pp}</p>
+	<?php echo $content;   ?>
+	7
 </body>
 </html>

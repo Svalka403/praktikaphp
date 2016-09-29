@@ -1,4 +1,4 @@
-<?php 
+<?php
 class RenderTemplate {
 	
 	public $vars;
@@ -6,12 +6,10 @@ class RenderTemplate {
 	public $Tpl;
 	function setTpl($teplate)
 	{
-		
 		$this->Tpl = $teplate;
 	}
 	function setVar($value)
 	{
-		
 		$this->vars = $value; 
 	}
 	function Render()
@@ -23,9 +21,3 @@ class RenderTemplate {
 		return ob_get_clean();
 	}
 }
-$arrey = array('imya' => "Igor", 'familiya' => "Shlext", 'otchestvo' => "Gennad'evich");
-$p = new RenderTemplate();
-$p->setTpl('index.php');
-$p->setVar($arrey);
- echo $p->Render();
-?>
