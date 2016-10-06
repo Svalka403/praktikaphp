@@ -1,28 +1,29 @@
 <?php
 class AuthClass {
 	
-    private $_login = "login"; //”станавливаем логин
-    private $_password = "password"; //”станавливаем пароль
+   // private $_login = "login"; //”станавливаем логин
+   
 
-    /**
-     * ѕровер€ет, авторизован пользователь или нет
-     * ¬озвращает true если авторизован, иначе false
-     * @return boolean 
-     */
+
     public function isAuth() {
         if (isset($_SESSION["is_auth"])) { //≈сли сесси€ существует
             return $_SESSION["is_auth"]; //¬озвращаем значение переменной сессии is_auth (хранит true если авторизован, false если не авторизован)
         }
         else return false; //ѕользователь не авторизован, т.к. переменна€ is_auth не создана
     }
-    
-    /**
-     * јвторизаци€ пользовател€
-     * @param string $login
-     * @param string $passwors 
-     */
-    public function auth($login, $passwors) {
-        if ($login == $this->_login && $passwors == $this->_password) { //≈сли логин и пароль введены правильно
+    public function auth($login, $password) 
+		{
+			
+		echo("</br>"."пароль".$login."пароль"."</br>");
+		echo("пароль".$password."пароль"."</br>");
+		$link = mysql_connect('localhost', 'root', '');
+		mysql_select_db('403gr', $link);
+		$_pass = mysql_query("select password from auth where login=".$login."");
+		$passw = mysql_fetch_row($_pass);
+		$pass=$passw[0];
+		echo("</br>"."пароль".$login."пароль"."</br>");
+		echo("пароль".$pass."пароль"."</br>");
+        if ($password == $pass) { 
             $_SESSION["is_auth"] = true; //ƒелаем пользовател€ авторизованным
             $_SESSION["login"] = $login; //«аписываем в сессию логин пользовател€
             return true;
